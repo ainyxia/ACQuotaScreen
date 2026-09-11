@@ -1,0 +1,73 @@
+.screen{--signal:#ffc77b;background-color:var(--bg)}
+.screen header{height:52px;padding:6px 22px;border-bottom:1px solid var(--line)}
+.screen #clock{font-size:21px}.screen #date{font-size:10px}
+.screen #plan{font-size:11px;border-left:3px solid var(--accent);padding-left:10px}
+.screen-tools button{width:36px;height:36px;min-height:36px}
+.screen footer{height:48px;padding:5px 22px}
+.screen nav{gap:8px}.screen nav button{min-height:36px;display:flex;align-items:center;gap:8px}
+.screen nav img{width:16px;height:16px;filter:invert(1)}
+.screen[data-theme=ice] nav img{filter:none}
+.screen nav button.active{border-bottom:2px solid var(--accent);border-radius:4px 4px 0 0}
+.screen button{transition:background-color .25s,border-color .25s,transform .18s;touch-action:manipulation}
+.screen button:active{transform:scale(.94);background:var(--line)}
+.screen button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.screen #quota{padding:18px 24px;gap:24px;isolation:isolate}
+.time-instrument{display:none}
+.screen[data-layout=clock] #quota{grid-template-columns:minmax(0,1.2fr) 214px minmax(0,.9fr);gap:24px;padding:12px 24px}
+.screen[data-layout=clock] .time-instrument{display:grid;place-items:center;height:100%;min-height:0}
+#time-dial{width:214px;height:214px;max-height:100%;object-fit:contain}
+.clock-face{position:relative}.clock-face>small{font-size:11px}
+#big-clock{font-size:66px;font-weight:650;line-height:1.25;margin:7px 0 9px}
+.clock-strip{gap:0;display:grid;grid-template-columns:repeat(3,1fr);margin:9px 0 0;border-top:1px solid var(--line);padding-top:12px}
+.clock-strip>span{padding-left:10px;border-left:2px solid var(--blue);font-size:10px}
+.clock-strip>span:first-child{border-color:var(--accent)}.clock-strip>span:last-child{border-color:var(--signal)}
+.clock-strip b{font-size:17px;font-weight:600;margin-top:4px}
+.screen[data-layout=clock] .balance{padding-left:22px}
+.screen .balance p{font-size:12px;margin-bottom:8px}.screen .balance>strong{font-size:48px}
+.screen .balance small{margin-top:8px;font-size:10px}
+.quota-meter{height:7px;background:var(--line);margin-top:18px;overflow:hidden;border-radius:2px}
+#quota-meter-fill{height:100%;width:0;background:var(--accent);transition:width .9s cubic-bezier(.22,.7,.2,1)}
+.screen #quota-meter-label{font-size:10px;color:var(--muted);line-height:1.3}
+.screen .balance[data-unavailable=true] .quota-meter{background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 10px)}
+.screen .windows article{padding:5px 0;border-bottom:1px solid var(--line);margin:8px 0}.screen .windows article:last-child{border-bottom:0}
+.screen[data-layout=dashboard] .quota-meter{margin-top:9px}.screen[data-layout=dashboard] #quota-meter-label{display:none}
+.screen #hardware{padding:10px 24px 13px}
+#sensor-source{font-size:10px;height:21px;display:flex;align-items:center;gap:7px}
+#sensor-source::before{content:'';width:6px;height:6px;background:var(--signal);border-radius:50%}
+.screen #sensors{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:9px 20px;height:calc(100% - 21px)}
+.sensor{position:relative;border-left:0;border-bottom:1px solid var(--line);padding:4px 0 7px;overflow:hidden;min-height:0;display:grid;grid-template-columns:1fr 64px;grid-template-rows:16px 1fr;gap:0 4px}
+.sensor small{font-size:10px;grid-column:1/-1;z-index:1}.sensor b{font-size:19px;margin:0;align-self:center;z-index:1}
+.sensor canvas{width:64px;height:28px;align-self:end;opacity:.9}.sensor[data-missing=true] b{font-size:14px;color:var(--muted)}
+.sensor:nth-child(3n) b{color:var(--signal)}
+.screen #control{grid-template-columns:1.1fr 1fr;padding:25px;gap:32px}
+.power{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.power button{height:114px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;background:transparent;color:var(--text);border-color:var(--line);font-size:12px}
+.power img{width:29px;height:29px;filter:invert(1)}.screen[data-theme=ice] .power img{filter:none}
+.power button:first-child{border-top:3px solid #ef938c}.power button:nth-child(2){border-top:3px solid var(--accent)}.power button:nth-child(3){border-top:3px solid var(--blue)}
+#shortcuts{border-left:1px solid var(--line);padding-left:24px;align-content:center;min-height:114px}
+#shortcuts:empty::after{content:'暂无快捷应用';color:var(--muted);font-size:12px}
+@keyframes page-reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes value-update{0%{color:var(--text)}50%{color:var(--accent)}100%{color:var(--text)}}
+@keyframes refresh-spin{to{transform:rotate(360deg)}}
+.screen .page-enter{animation:page-reveal .65s cubic-bezier(.2,.7,.2,1) both}
+.screen dialog[open]{animation:page-reveal .3s ease-out}.screen #refresh.busy img{animation:refresh-spin .9s linear infinite}
+.screen #big-clock.changed{animation:value-update .8s ease}
+.screen[data-motion=off] *, .screen[data-motion=off] *::before{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.screen *{animation:none!important;transition:none!important}}
+@media(max-width:700px){
+ .screen header{height:62px;padding:7px 14px}.screen #clock{font-size:19px}.screen #date{font-size:9px}
+ .screen #plan{max-width:82px;padding-left:7px}.screen-tools button{width:32px;min-height:34px;height:34px}
+ .screen footer{height:88px;padding:7px 14px}.screen nav button{min-height:39px}
+ .screen[data-layout=clock] #quota{grid-template-columns:1fr;grid-template-rows:auto 224px auto;align-content:center;gap:14px;padding:18px 24px}
+ .screen[data-layout=clock] .clock-face{text-align:center}.screen[data-layout=clock] #big-clock{font-size:60px;margin:0}
+ .clock-strip{text-align:left;margin-top:8px;padding-top:10px}.clock-strip b{font-size:16px}
+ .screen[data-layout=clock] .balance{border:0;padding:12px 0 0;border-top:1px solid var(--line)}
+ .screen[data-layout=clock] .balance>strong{font-size:38px}.screen[data-layout=clock] .balance p{margin-bottom:3px}
+ .screen[data-layout=clock] .quota-meter{margin-top:12px}
+ .screen #sensors{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));gap:14px}
+ .sensor{grid-template-columns:1fr;grid-template-rows:18px 30px 28px;padding:5px 0}
+ .sensor canvas{width:100%;height:28px}.sensor b{font-size:20px}
+ .screen #control{grid-template-columns:1fr;gap:30px;align-content:center;padding:20px}
+ .power{gap:9px}.power button{height:115px}.power img{width:26px;height:26px}
+ #shortcuts{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}
+}

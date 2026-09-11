@@ -1,0 +1,14 @@
+.preview-frame{position:relative;width:100%;aspect-ratio:8/3;overflow:hidden;background:#141618;border:1px solid var(--line)}
+.preview-frame iframe{position:absolute;width:960px;height:360px;border:0;transform-origin:top left}
+.screen #hardware{padding:10px 24px 12px}
+#sensor-source{display:block;height:22px;color:var(--muted);font-size:11px}
+.screen #sensors{height:calc(100% - 22px);gap:8px 16px;grid-template-rows:repeat(3,minmax(0,1fr));align-items:center}
+.sensor b{font-size:21px;white-space:nowrap}
+.screen .balance>strong{font-size:42px}
+@media(max-width:700px){
+ .screen #sensors{grid-template-rows:repeat(6,minmax(0,1fr));gap:10px}
+ .screen #hardware{padding:16px}
+ .screen #clock{font-size:24px}
+ .screen footer{height:100px}
+ .screen .balance>strong{font-size:40px}
+}

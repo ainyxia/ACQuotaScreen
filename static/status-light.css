@@ -1,0 +1,24 @@
+#codex-edge{position:fixed;inset:0;pointer-events:none;z-index:99;--light:#626b7a;box-shadow:inset 0 0 15px -5px var(--light);border:2px solid var(--light)}
+#codex-edge[hidden],#codex-status[hidden]{display:none}
+#codex-edge[data-status=working],#codex-status[data-status=working]{--light:#49bfff}
+#codex-edge[data-status=waiting],#codex-status[data-status=waiting]{--light:#ffcb4c}
+#codex-edge[data-status=complete],#codex-status[data-status=complete]{--light:#5ce4a1}
+#codex-edge[data-status=error],#codex-status[data-status=error]{--light:#ff526c}
+#codex-edge i{position:absolute;display:block;background:var(--light);box-shadow:0 0 9px 2px var(--light);opacity:.75}
+#codex-edge .top,#codex-edge .bottom{height:3px;width:20%}
+#codex-edge .left,#codex-edge .right{width:3px;height:20%}
+#codex-edge .top{top:0;left:0}#codex-edge .right{right:0;top:0}#codex-edge .bottom{bottom:0;right:0}#codex-edge .left{left:0;bottom:0}
+@keyframes edge-x{from{left:0}to{left:80%}}@keyframes edge-y{from{top:0}to{top:80%}}
+@keyframes edge-x-back{from{right:0}to{right:80%}}@keyframes edge-y-back{from{bottom:0}to{bottom:80%}}
+@keyframes edge-breathe{0%,100%{opacity:.35}50%{opacity:1}}
+#codex-edge[data-status=working] .top{animation:edge-x 3s linear infinite}
+#codex-edge[data-status=working] .right{animation:edge-y 3s linear infinite}
+#codex-edge[data-status=working] .bottom{animation:edge-x-back 3s linear infinite}
+#codex-edge[data-status=working] .left{animation:edge-y-back 3s linear infinite}
+#codex-edge[data-status=waiting]{animation:edge-breathe 2.5s ease-in-out infinite}
+#codex-edge[data-status=idle],#codex-edge[data-status=unknown]{box-shadow:none;opacity:.35}
+#codex-edge[data-status=idle] i,#codex-edge[data-status=unknown] i{display:none}
+#codex-status{--light:#8e98a8;display:inline-flex;gap:6px;align-items:center;font-size:10px;color:var(--light);white-space:nowrap}
+#codex-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--light)}
+@media(max-width:700px){.screen header{gap:5px}.screen header #plan{display:none}#codex-status{font-size:9px}}
+@media(prefers-reduced-motion:reduce){#codex-edge,#codex-edge i{animation:none!important}}

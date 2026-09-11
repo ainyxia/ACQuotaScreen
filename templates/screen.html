@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="ac-token" content="{{ token }}"><title>AC 副屏</title>
+  <link rel="stylesheet" href="/static/style.css"><link rel="stylesheet" href="/static/layout.css">
+  <link rel="stylesheet" href="/static/themes.css"><link rel="stylesheet" href="/static/instruments.css"><link id="theme" rel="stylesheet" href="/theme.css">
+</head>
+<body class="screen" data-theme="{{ theme }}" data-layout="{{ layout }}" data-preview="{{ '1' if preview else '0' }}">
+  <div id="background"></div>
+  <header>
+    <div class="header-clock"><strong id="clock">--:--</strong><small id="date"></small></div>
+    <span id="plan">AC 副屏</span>
+    <div class="screen-tools"><button id="appearance-open" title="主题与布局" aria-label="主题与布局"><img src="/static/icons/palette.svg" alt=""></button><button id="refresh" title="刷新额度" aria-label="刷新额度"><img src="/static/icons/refresh-cw.svg" alt=""></button></div>
+  </header>
+  <main id="quota" class="screen-page">
+    <section class="clock-face"><small id="big-date"></small><strong id="big-clock">--:--</strong><div class="clock-strip"><span>CPU <b id="mini-cpu">--</b></span><span>GPU <b id="mini-gpu">--</b></span><span>内存 <b id="mini-ram">--</b></span></div></section>
+    <section class="time-instrument"><canvas id="time-dial" width="440" height="440" aria-label="实时时钟表盘"></canvas></section>
+    <section class="balance"><p>剩余额度 <span id="unit">USD</span></p><strong id="remaining">--</strong><small id="quota-status">等待数据</small><div class="quota-meter"><div id="quota-meter-fill"></div></div><small id="quota-meter-label">等待额度数据</small></section>
+    <section class="windows" id="windows"></section>
+    <section class="stats"><p>今日套餐消耗 <b id="today">--</b></p><p>本密钥累计请求 <b id="requests">--</b></p><p>本密钥累计 Token <b id="tokens">--</b></p><p>套餐到期 <b id="expires">--</b></p></section>
+  </main>
+  <main id="hardware" class="screen-page" hidden><small id="sensor-source"></small><div id="sensors"></div></main>
+  <main id="control" class="screen-page" hidden><div class="power"><button data-power="shutdown">关机</button><button data-power="restart">重启</button><button data-power="sleep">睡眠</button></div><div id="shortcuts"></div></main>
+  <footer><span id="custom"></span><nav><button data-page="quota">额度</button><button data-page="hardware">监控</button><button data-page="control">控制</button></nav><small id="updated">尚未更新</small></footer>
+  <dialog id="appearance-dialog"><div class="dialog-heading"><h2>主题与布局</h2><button id="appearance-close" aria-label="关闭">×</button></div><div class="theme-swatches" id="screen-themes"></div><div class="layout-options" id="screen-layouts"></div></dialog>
+  <dialog id="power-dialog"><h2 id="power-title"></h2><p id="countdown"></p><button id="power-confirm" disabled>确认</button><button id="power-cancel">取消</button></dialog>
+  <script src="/static/screen.js"></script>
+  <script src="/static/instruments.js"></script>
+  <script src="/static/spider.js"></script>
+  <script src="/static/status-light.js"></script>
+</body>
+</html>

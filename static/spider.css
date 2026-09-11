@@ -1,0 +1,11 @@
+.screen[data-theme=spider]{--bg:#0b0d13;--surface:#191a25;--line:#3a2836;--text:#f4f7fc;--muted:#9da4b3;--accent:#ff455c;--blue:#46d9f4;--signal:#ffbf6e}
+#spider-cockpit{display:none}
+.screen[data-theme=spider] #quota{display:flex;padding:0;gap:0;align-items:stretch}
+.screen[data-theme=spider] #quota[hidden]{display:none}
+.screen[data-theme=spider] #quota>section{display:none}
+.screen[data-theme=spider] #quota>#spider-cockpit{display:flex;width:100%;height:100%;align-items:center;justify-content:center}
+#spider-cockpit canvas{width:100%;height:100%;object-fit:contain;min-height:0;max-height:100%}
+.screen[data-theme=spider] header{border-bottom:2px solid #a3263a;background:#161019}
+.screen[data-theme=spider] footer{background:#12131c;border-top:1px solid #753046}
+.screen[data-theme=spider] nav button.active{background:#341522;border:1px solid #ff455c;box-shadow:inset 0 -3px #ff455c}
+.screen[data-theme=spider] .sensor{border-bottom:1px solid #5e2536}

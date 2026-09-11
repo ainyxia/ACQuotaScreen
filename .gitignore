@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+.playwright-cli/
+output/
+server-error.log
+*.log
+runtime.json
+install.json
+config.json
+*.spec.bak
+
